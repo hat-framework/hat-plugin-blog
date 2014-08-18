@@ -1,0 +1,9 @@
+<?php
+if(!empty($item)){
+    $this->LoadComponent("blog/artigo/show", "component");
+    $this->component->draw($item,"");
+}else{
+    echo "<h1>Nenhum conteúdo encontrado</h1>";
+    echo "<p>Não existe nenhum conteúdo relacionado nesta seção</p>";
+}
+?>

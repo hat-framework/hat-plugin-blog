@@ -1,0 +1,12 @@
+<div style="padding-top: 5px;"></div>
+<?php
+if(!empty($artigos)){
+    $this->LoadComponent("blog/artigo/artigos", "art");
+    $this->art->draw($artigos,"");
+    $this->LoadResource("html/paginator", 'pag');
+    $this->pag->draw();
+}else{
+    echo "<h3>Nenhuma postagem encontrada</h3>";
+    echo "<p>Não existe nenhum conteúdo relacionado com esta página</p>";
+}
+?>

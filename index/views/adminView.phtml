@@ -1,0 +1,22 @@
+<?php $this->Html->LoadCss('area-admin'); ?>
+<h1>Administrar <?php echo ucfirst(CURRENT_MODULE); ?></h1>
+<div class="painel-item">
+    <div class="painel-item-titulo">
+        <h2>Funcionalidades</h2>
+        <span class="painel-item-desc">Gerencie as funcionalidades disponíveis</span>
+    </div>
+
+    <div class="painel-item-conteudo">
+        <?php
+            $linkc = $this->Html->getLink("");
+            $temp = $module_menu[CURRENT_MODULE];
+            unset($temp['loja']);
+            foreach($temp as $name => $item){
+                $link = $item;
+         ?>
+
+
+        <div class="link"><a href="<?php echo "{$linkc}{$link}"; ?>"><?php echo ucfirst($name); ?></a></div>
+        <?php }?>
+    </div>
+</div>

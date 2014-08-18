@@ -1,0 +1,21 @@
+<?php
+
+if(!empty($item) && array_key_exists('cod_categoria', $item)){
+    $url = $this->Html->getLink(CURRENT_MODULE);
+    echo "<a href='$url'>".ucfirst(CURRENT_MODULE)."</a>";
+    $temp = $item['cod_categoria'];
+    $k = array_keys($temp);
+    $k = array_shift($k);
+    $n = array_shift($temp);
+    $url = $this->Html->getLink(CURRENT_MODULE."/categoria/show/$k/". GetPlainName($n));
+    echo " > <a href='$url'>$n</a>";
+}
+
+if(!empty($item)){
+    $this->LoadComponent("blog/artigo/show", "component");
+    $this->component->draw($item,"");
+}else{
+    echo "<h1>Nenhum conteúdo encontrado</h1>";
+    echo "<p>Não existe nenhum conteúdo relacionado nesta seção</p>";
+}
+?>

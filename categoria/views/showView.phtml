@@ -1,0 +1,26 @@
+<div style="padding-top: 5px;"></div>
+<?php
+if(isset($links) && !empty ($links)){
+    $url = $this->Html->getLink("blog");
+    echo "<a href='$url'>".BLOG_NAME."</a>";
+    foreach($links as $lk){
+        $url = $this->Html->getLink($lk['link']);
+        echo " > <a href='$url'>".$lk['catnome']."</a>";
+    }
+}
+?>
+<div style="padding-top: 10px;"></div>
+<?php
+if(isset($item))
+extract($item);
+
+if(isset($catnome))
+echo "<h1>$catnome</h1>";
+
+if(!empty($__artigos)){
+    $this->LoadComponent("blog/artigo/artigos", "art")->draw($__artigos,"");
+    
+}else{
+    echo "<h3>Nenhuma postagem encontrada</h3>";
+    echo "<p>Não existe nenhum conteúdo relacionado com esta página</p>";
+}

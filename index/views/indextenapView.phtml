@@ -1,0 +1,58 @@
+<div style="padding-top: 5px;"></div>
+<?php
+if(isset($links)){
+    foreach($links as $lk){
+        $url = $this->Html->getLink($lk['link']);
+        echo " > <a href='$url'>".$lk['catnome']."</a>";
+    }
+}
+?>
+<div style="padding-top: 10px;"></div>
+<style type="text/css">
+    .box{
+        display:none;
+        float: left;
+        margin-right: 30px;
+        height: 300px;
+        width: 295px;
+    }
+    .box img{height: 300px; width: 295px;}
+    .box #title{
+        display: none;
+    }
+</style>
+
+
+<?php
+
+echo "<h3>".FRASE_RUSKIN."</h3>";
+echo "<h3>".FRASE_MOLLER."</h3>";
+/*
+print_r($fotos_tenap);
+print_r($fotos_inexp);
+$artigo = array();
+$artigo[] = array('cod_artigo' => '0','album'  => '','titulo' => 'short title');
+$artigo[] = array('cod_artigo' => '2','album'  => '','titulo' => 'Testando títulos normais');
+$artigo[] = array('cod_artigo' => '1','album'  => '','titulo' =>
+    'Este é um exemplo de como funciona o banner rotativo com título longos e que ultrapassam o tamanho
+        esperado e causa algum tipo de quebra no layout'
+);
+*/
+//inicializa as fotos
+$tenap = isset($tenap)? $tenap: array();
+$inexp = isset($inexp)? $inexp: array();
+
+//carrega o slider
+$this->LoadJsPlugin('slider/easyslider', 'slider');
+$this->LoadJsPlugin('galerias/lightbox', 'gligth');
+
+//desenha os albuns
+$this->slider->setTitle("TENAP");
+$this->slider->drawFotos($tenap, 'tenap', 'tenap', 'box');
+$this->slider->setTitle("INEXPERIENTES");
+$this->slider->drawFotos($inexp, 'inexp', 'concorrentes', 'box');
+
+$this->gligth->start('tenap', "#");
+$this->gligth->start('inexp', "#");
+
+?>
