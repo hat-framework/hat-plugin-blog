@@ -44,7 +44,7 @@ $inexp = isset($inexp)? $inexp: array();
 
 //carrega o slider
 $this->LoadJsPlugin('slider/easyslider', 'slider');
-$this->LoadJsPlugin('galerias/lightbox', 'gligth');
+//$this->LoadJsPlugin('galerias/lightbox', 'gligth');
 
 //desenha os albuns
 $this->slider->setTitle("TENAP");
@@ -52,7 +52,5 @@ $this->slider->drawFotos($tenap, 'tenap', 'tenap', 'box');
 $this->slider->setTitle("INEXPERIENTES");
 $this->slider->drawFotos($inexp, 'inexp', 'concorrentes', 'box');
 
-$this->gligth->start('tenap', "#");
-$this->gligth->start('inexp', "#");
-
-?>
+//$this->gligth->start('tenap', "#");
+//$this->gligth->start('inexp', "#");

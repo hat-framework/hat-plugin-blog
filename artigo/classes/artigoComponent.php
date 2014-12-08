@@ -41,29 +41,39 @@ class artigoComponent extends classes\Component\Component{
             $this->conteudo_bloqueado();
             return;
         }
-        $this->LoadJsPlugin("galerias/lightbox", 'lb');
-        $this->lb->start('conteudo');
-        $this->lb->start('galeria');
+        //$this->LoadJsPlugin("galerias/lightbox", 'lb');
+        //$this->lb->start('conteudo');
+        //$this->lb->start('galeria');
         $this->Html->LoadCss("blog/artigo");
         extract($artigo);
         $autor_artigo = array_shift($artigo['blog_artigo_autor']);
         $autor_artigo = ($autor_artigo != "")? "Por: $autor_artigo":"";
         $blog_artigo_criadoem = \classes\Classes\timeResource::Date2StrBr($blog_artigo_criadoem);
+        $link = $this->Html->getLink("blog/artigo/show/$cod_artigo");
+        $fb   = $this->LoadResource('api', 'api')->LoadApiClass('facebook');
         //$resumo = html_entity_decode($resumo);
         echo "<div class='artigo'>
-                    <hr />
-                    <h1>$titulo</h1>
-                    <h2>$resumo</h2>
-                    <hr />
-                    <div class='conteudo' style='line-height:120%;'>$conteudo</div>
-                    <div style='clear:both;'></div>
-                    <hr />
-                    <div class='blog_artigo_criadoem'>$blog_artigo_criadoem</div>
-                    <div class='blog_artigo_autor'>$autor_artigo</div>
+                <hr />
+                <h1>$titulo</h1>
+                <h2>$resumo</h2>
+                <div class='blog_artigo_criadoem'>$blog_artigo_criadoem - $autor_artigo</div>
+                <hr />
+                <div class='conteudo' style='line-height:150%; font-size:16px;'>$conteudo</div>
+                <div style='clear:both;'></div>
+                <br />";
+                $fb->like()
+                   ->setPage($link)
+                   ->setLayout('button')
+                   ->execute();
+        echo        "<hr />
              </div>
              
               ";
+        
+        $fb->comments()
+           ->setNumPosts(5)
+           ->setPage($link)
+           ->execute();
+        
     }
 }
-
-?>

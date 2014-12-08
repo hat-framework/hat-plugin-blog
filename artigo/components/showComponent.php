@@ -4,10 +4,10 @@ class showComponent extends classes\Component\Component{
     public function draw($artigo, $class = ''){
         
         if(empty ($artigo)) return;
-        $this->LoadJsPlugin("galerias/lightbox", 'lb');
+        //$this->LoadJsPlugin("galerias/lightbox", 'lb');
         $this->LoadComponent("galeria/album", 'galbum');
-        $this->lb->start('conteudo');
-        $this->lb->start('galeria');
+        //$this->lb->start('conteudo');
+        //$this->lb->start('galeria');
         
         $this->Html->LoadCss("blog/artigo");
         extract($artigo);
